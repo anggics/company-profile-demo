@@ -38,6 +38,14 @@ Menu yang tidak boleh diakses editor tampil dengan ikon gembok dan menampilkan h
 
 Uji lokal: `npx serve .` atau `python3 -m http.server`.
 
+## Unggah foto di panel admin
+Setiap kolom gambar (gambar beranda & tentang di Profil Perusahaan, foto produk, gambar event, sampul berita) punya dua cara:
+1. Tempel **URL gambar**, atau
+2. Klik **Unggah foto** / seret foto ke kotak di bawah URL (JPG, PNG, WebP, maks. 10 MB).
+
+Pada mockup, foto otomatis diperkecil (maks. 1280 px) dan dikompres ke JPEG ±100–300 KB lalu disimpan di browser. Penyimpanan browser terbatas (±5 MB), jadi bila penuh akan muncul pesan untuk memakai foto lebih kecil.
+Pada versi produksi, foto diunggah ke server/object storage dan yang disimpan di database hanya URL-nya.
+
 ## Mengganti konten
 - Semua konten ada di `assets/js/data.js` (profil, produk, event, berita, struktur, alamat & peta, WhatsApp).
 - Logo: fungsi `logo()` di `data.js` dan SVG di `profesional*/index.html` (preloader). Ganti dengan logo resmi.

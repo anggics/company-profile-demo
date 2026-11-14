@@ -223,3 +223,17 @@ table.rbac td:first-child { display: flex; gap: 10px; align-items: center; color
 table.rbac td:first-child .ic { color: var(--muted); }
 .user small .badge { padding: 1px 8px; font-size: .68rem; }
 @media (max-width: 520px) { .demo-accounts { grid-template-columns: 1fr; } }
+
+/* Unggah foto */
+.img-field .upload { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 10px 12px; border: 1.5px dashed #c9d6d3; border-radius: 10px; background: #fafcfb; transition: border-color .2s, background .2s; }
+.img-field .upload.over { border-color: var(--sun2); background: #fff8ea; }
+.up-btn { display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 9px; background: var(--ink); color: #fff; font-weight: 700; font-size: .84rem; cursor: pointer; transition: background .2s; }
+.up-btn:hover { background: var(--ink-3); }
+.up-btn:focus-within { outline: 3px solid rgba(217,142,28,.35); }
+.up-note { flex: 1; min-width: 160px; color: var(--muted); font-size: .8rem; display: inline-flex; align-items: center; gap: 6px; word-break: break-all; }
+.up-note .ic { color: var(--green); }
+.up-clear { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: #fff; color: var(--muted); border-radius: 9px; padding: 7px 12px; font-size: .8rem; font-weight: 600; cursor: pointer; }
+.up-clear:hover { color: var(--red); border-color: #f5c2c3; background: #fff5f5; }
+.up-clear[hidden] { display: none; }
+.img-field .img-preview { margin-top: 2px; }
+.img-field .up-btn, .f .up-btn { color: #fff; font-size: .84rem; }

@@ -60,6 +60,8 @@
     back: '<line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>',
     link: '<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>',
     user: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+    upload: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>',
+    image: '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>',
     activity: '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>'
   };
 
@@ -283,7 +285,11 @@
     esc(s) {
       return String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     },
-    cssUrl(u) { return 'url("' + String(u || '').replace(/["\\\n\r()]/g, '') + '")'; },
+    // Aman dipakai di dalam atribut style="…" (tanpa tanda kutip ganda); mendukung URL biasa & foto unggahan (data:)
+    cssUrl(u) {
+      const safe = String(u || '').replace(/[\n\r\\]/g, '').replace(/["'()]/g, (c) => ({ '"': '%22', "'": '%27', '(': '%28', ')': '%29' }[c]));
+      return "url('" + safe + "')";
+    },
     fmtDate(iso, opt) {
       const d = new Date(iso + (iso.length === 10 ? 'T00:00:00' : ''));
       if (isNaN(d)) return iso;

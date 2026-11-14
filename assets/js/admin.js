@@ -130,8 +130,12 @@
       '<a href="#dashboard" class="btn btn-primary" style="margin-top:18px">Kembali ke Dashboard</a></div>';
   }
 
-  function save(msg, logText) {
-    if (!CP.saveData(D)) { toast('Gagal menyimpan: penyimpanan browser tidak tersedia.', true); return; }
+  function save(msg, logText) { // mengembalikan false jika gagal
+    if (!CP.saveData(D)) {
+      D = CP.getData(true); // batalkan perubahan yang gagal disimpan
+      toast('Gagal menyimpan: penyimpanan browser penuh. Gunakan foto lebih kecil atau hapus beberapa foto unggahan.', true);
+      return false;
+    }
     if (logText) CP.addLog(me, logText);
     toast(msg || 'Tersimpan. Perubahan langsung tampil di website.');
   }
@@ -167,13 +171,100 @@
 
   function field(f, v) {
     const val = v == null ? '' : v;
+    if (f.preview) return imageField(f, val);
     const req = f.required ? ' required' : '';
     let input;
     if (f.type === 'textarea') input = '<textarea name="' + f.name + '"' + req + ' rows="' + (f.rows || 4) + '">' + esc(val) + '</textarea>';
     else if (f.type === 'select') input = '<select name="' + f.name + '">' + f.options.map((o) => '<option value="' + esc(o[0]) + '"' + (String(o[0]) === String(val) ? ' selected' : '') + '>' + esc(o[1]) + '</option>').join('') + '</select>';
     else input = '<input name="' + f.name + '" type="' + (f.type || 'text') + '" value="' + esc(val) + '"' + req + (f.placeholder ? ' placeholder="' + esc(f.placeholder) + '"' : '') + (f.list ? ' list="' + f.list + '"' : '') + '>';
-    return '<div class="f' + (f.full ? ' full' : '') + '"><label>' + f.label + (f.required ? ' *' : '') + '</label>' + input + (f.hint ? '<small>' + f.hint + '</small>' : '') +
-      (f.preview ? '<div class="img-preview" data-preview="' + f.name + '" style="background-image:' + cssUrl(val) + (val ? '' : ';display:none') + '"></div>' : '') + '</div>';
+    return '<div class="f' + (f.full ? ' full' : '') + '"><label>' + f.label + (f.required ? ' *' : '') + '</label>' + input + (f.hint ? '<small>' + f.hint + '</small>' : '') + '</div>';
+  }
+
+  /* ---------- Kolom gambar: URL + unggah foto ----------
+     Nilai disimpan di input tersembunyi [name]. Isinya bisa URL biasa
+     atau foto unggahan (data URL hasil kompresi). Pada versi produksi,
+     foto diunggah ke server/object storage dan yang disimpan adalah URL-nya. */
+  const MAX_UPLOAD = 10 * 1024 * 1024;
+  const kb = (dataUrl) => Math.round(dataUrl.length * 0.75 / 1024);
+  function imageField(f, val) {
+    const isData = /^data:/.test(val);
+    const n = f.name;
+    return '<div class="f img-field' + (f.full ? ' full' : '') + '" data-img="' + n + '"><label>' + f.label + '</label>' +
+      '<input type="url" data-url value="' + (isData ? '' : esc(val)) + '" placeholder="' + (isData ? 'Memakai foto yang diunggah' : 'https://…') + '">' +
+      '<input type="hidden" name="' + n + '" value="' + esc(val) + '">' +
+      '<div class="upload" data-drop>' +
+      '<label class="up-btn">' + icon('upload', 16, 2) + 'Unggah foto<input type="file" accept="image/*" data-file hidden></label>' +
+      '<span class="up-note" data-note>' + (isData ? icon('check', 14, 2.4) + 'Foto unggahan (' + kb(val) + ' KB)' : 'atau seret foto ke sini · JPG, PNG, WebP · maks. 10 MB') + '</span>' +
+      '<button type="button" class="up-clear" data-clear' + (val ? '' : ' hidden') + '>' + icon('trash', 14) + 'Hapus</button></div>' +
+      '<div class="img-preview" data-preview style="background-image:' + cssUrl(val) + (val ? '' : ';display:none') + '"></div>' +
+      (f.hint ? '<small>' + f.hint + '</small>' : '') + '</div>';
+  }
+
+  // Baca file, perkecil (maks. 1280 px) dan kompres ke JPEG agar ringan disimpan
+  function readImage(file) {
+    return new Promise((resolve, reject) => {
+      if (!file || !/^image\//.test(file.type)) return reject('Berkas harus berupa gambar (JPG, PNG, WebP).');
+      if (file.size > MAX_UPLOAD) return reject('Ukuran foto maksimal 10 MB.');
+      const reader = new FileReader();
+      reader.onerror = () => reject('Gagal membaca berkas.');
+      reader.onload = () => {
+        const img = new Image();
+        img.onerror = () => reject('Format gambar tidak didukung.');
+        img.onload = () => {
+          const max = 1280;
+          const sc = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+          const c = document.createElement('canvas');
+          c.width = Math.max(1, Math.round(img.naturalWidth * sc));
+          c.height = Math.max(1, Math.round(img.naturalHeight * sc));
+          const ctx = c.getContext('2d');
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, c.width, c.height);
+          ctx.drawImage(img, 0, 0, c.width, c.height);
+          resolve(c.toDataURL('image/jpeg', 0.8));
+        };
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function bindImageFields(form) {
+    $$('[data-img]', form).forEach((box) => {
+      const url = $('[data-url]', box);
+      const hidden = $('input[type=hidden]', box);
+      const file = $('[data-file]', box);
+      const note = $('[data-note]', box);
+      const clear = $('[data-clear]', box);
+      const prev = $('[data-preview]', box);
+      const drop = $('[data-drop]', box);
+      const defNote = 'atau seret foto ke sini · JPG, PNG, WebP · maks. 10 MB';
+      const set = (v) => {
+        hidden.value = v;
+        prev.style.backgroundImage = cssUrl(v);
+        prev.style.display = v ? '' : 'none';
+        clear.hidden = !v;
+      };
+      url.addEventListener('input', () => {
+        url.placeholder = 'https://…';
+        note.textContent = defNote;
+        set(url.value.trim());
+      });
+      const useFile = (f) => {
+        if (!f) return;
+        note.textContent = 'Memproses foto…';
+        readImage(f).then((data) => {
+          url.value = '';
+          url.placeholder = 'Memakai foto yang diunggah';
+          note.innerHTML = icon('check', 14, 2.4) + esc(f.name) + ' (' + kb(data) + ' KB)';
+          set(data);
+        }, (err) => { note.textContent = defNote; toast(err, true); });
+      };
+      file.addEventListener('change', () => { useFile(file.files[0]); file.value = ''; });
+      clear.addEventListener('click', () => { url.value = ''; url.placeholder = 'https://…'; note.textContent = defNote; set(''); });
+      ['dragenter', 'dragover'].forEach((t) => drop.addEventListener(t, (e) => { e.preventDefault(); drop.classList.add('over'); }));
+      ['dragleave', 'drop'].forEach((t) => drop.addEventListener(t, (e) => { e.preventDefault(); drop.classList.remove('over'); }));
+      drop.addEventListener('drop', (e) => useFile(e.dataTransfer.files[0]));
+    });
   }
   const datalist = (id, items) => '<datalist id="' + id + '">' + Array.from(new Set(items)).map((c) => '<option value="' + esc(c) + '">').join('') + '</datalist>';
 
@@ -182,18 +273,12 @@
       '<form class="modal-body" id="mForm"><div class="form-grid">' + fields.map((f) => field(f, values[f.name])).join('') + '</div>' + (extra || '') + '</form>' +
       '<div class="modal-foot"><button class="btn btn-light" data-close>Batal</button><button class="btn btn-primary" type="submit" form="mForm">' + icon('check', 16, 2.4) + 'Simpan</button></div>');
     const form = $('#mForm');
-    bindPreviews(form);
+    bindImageFields(form);
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const vals = Object.fromEntries(new FormData(form).entries());
       Object.keys(vals).forEach((k) => { vals[k] = String(vals[k]).trim(); });
       if (onSave(vals) !== false) closeModal();
-    });
-  }
-  function bindPreviews(form) {
-    $$('[data-preview]', form).forEach((p) => {
-      const inp = $('[name="' + p.dataset.preview + '"]', form);
-      inp.addEventListener('input', () => { p.style.backgroundImage = cssUrl(inp.value); p.style.display = inp.value ? '' : 'none'; });
     });
   }
   const localDate = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
@@ -290,9 +375,9 @@
           { name: 'phone', label: 'Telepon' }, { name: 'email', label: 'Email', type: 'email' },
           { name: 'whatsapp', label: 'Nomor WhatsApp', hint: 'Format internasional, mis. 6281234567890' }, { name: 'hours', label: 'Jam operasional', full: true }]],
         ['Gambar', [
-          { name: 'heroImage', label: 'Gambar utama beranda (URL)', type: 'url', full: true, preview: true },
-          { name: 'aboutImage', label: 'Gambar tentang 1 (URL)', type: 'url', preview: true },
-          { name: 'aboutImage2', label: 'Gambar tentang 2 (URL)', type: 'url', preview: true }]]
+          { name: 'heroImage', label: 'Gambar utama beranda', type: 'url', full: true, preview: true },
+          { name: 'aboutImage', label: 'Gambar tentang 1', type: 'url', preview: true },
+          { name: 'aboutImage2', label: 'Gambar tentang 2', type: 'url', preview: true }]]
       ];
       const vals = Object.assign({}, C, { mission: C.mission.join('\n') });
       return '<form class="panel" id="profilForm">' + head('Profil Perusahaan', 'Informasi ini tampil di seluruh halaman website.') +
@@ -374,7 +459,7 @@
           { name: 'name', label: 'Nama produk', required: true, full: true },
           { name: 'category', label: 'Kategori', list: 'catList', required: true },
           { name: 'icon', label: 'Ikon (jika tanpa foto)', type: 'select', options: ICON_CHOICES.map((i) => [i, i]) },
-          { name: 'image', label: 'URL foto produk (opsional)', type: 'url', full: true, preview: true },
+          { name: 'image', label: 'Foto produk (opsional)', type: 'url', full: true, preview: true, hint: 'Jika kosong, kartu produk memakai ikon.' },
           { name: 'short', label: 'Deskripsi singkat', full: true, hint: 'Tampil di kartu produk.' },
           { name: 'desc', label: 'Deskripsi lengkap', type: 'textarea', full: true, rows: 3 },
           { name: 'specs', label: 'Spesifikasi', type: 'textarea', full: true, rows: 4, hint: 'Satu baris per spesifikasi, format: Label: Nilai' },
@@ -400,7 +485,7 @@
           { name: 'date', label: 'Tanggal', type: 'date', required: true },
           { name: 'time', label: 'Waktu', placeholder: '09.00 – 12.00 WIB' },
           { name: 'location', label: 'Lokasi', placeholder: 'Kota / Daring' },
-          { name: 'image', label: 'URL gambar', type: 'url', full: true, preview: true },
+          { name: 'image', label: 'Gambar event', type: 'url', full: true, preview: true },
           { name: 'desc', label: 'Deskripsi', type: 'textarea', full: true, rows: 4 }
         ],
         empty: () => ({}),
@@ -420,7 +505,7 @@
           { name: 'author', label: 'Penulis' },
           isAdmin() ? { name: 'status', label: 'Status', type: 'select', options: [['publish', 'Terbit'], ['draft', 'Draf']] }
             : { name: 'statusInfo', label: 'Status', hint: 'Editor menyimpan sebagai draf. Admin yang menerbitkan.' },
-          { name: 'image', label: 'URL gambar sampul', type: 'url', full: true, preview: true },
+          { name: 'image', label: 'Gambar sampul berita', type: 'url', full: true, preview: true },
           { name: 'excerpt', label: 'Ringkasan', type: 'textarea', full: true, rows: 2 },
           { name: 'content', label: 'Isi berita', type: 'textarea', full: true, rows: 9, hint: 'Pisahkan paragraf dengan satu baris kosong.' }
         ],
@@ -469,7 +554,7 @@
 
     profil() {
       const form = $('#profilForm');
-      bindPreviews(form);
+      bindImageFields(form);
       $('#cancelProfil').addEventListener('click', show);
       form.addEventListener('submit', (e) => {
         e.preventDefault();
