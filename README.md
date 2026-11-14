@@ -1,71 +1,53 @@
-# Mockup Website Company Profile — 3 Paket
+# Demo Website Company Profile — PT Cakra Proteksi Indonesia
 
-Situs statis murni (HTML + CSS + JavaScript, tanpa build step) yang siap di-deploy ke Vercel.
-Konten demo memakai perusahaan fiktif **PT Arunika Solusi Nusantara**.
+Situs statis (HTML + CSS + JavaScript, tanpa build step), siap di-deploy ke Vercel.
+Isi perusahaan (produk, event, berita, struktur, alamat) adalah **contoh** dan perlu diganti dengan materi resmi dari klien.
 
 | URL | Isi |
 |---|---|
-| `/` | Halaman pilihan paket + tabel perbandingan |
-| `/standard/` | Paket **Standar** — template company profile yang bersih |
-| `/profesional/` | Paket **Profesional** — desain premium + animasi |
-| `/profesional-admin/` | Paket **Profesional + Admin** — website yang membaca konten dari panel admin |
-| `/admin/` | **Panel Admin** (login demo: `admin` / `admin123`) |
+| `/` | Halaman pilihan paket (harga & cakupan sesuai RAB) |
+| `/standard/` | Paket **Standar** — 6 menu statis, form kontak, WhatsApp, peta |
+| `/profesional/` | Paket **Profesional** — desain custom, animasi, halaman detail Produk/Event/Berita |
+| `/profesional-admin/` | Paket **Profesional + Panel Admin** — website yang membaca konten dari panel |
+| `/admin/` | **Panel Admin** |
 
-Menu di setiap website: Beranda, Tentang Perusahaan, Struktur Organisasi, Event, Layanan.
+Menu website: Beranda, Tentang Perusahaan, Struktur Organisasi, Produk, Event, Berita.
+Halaman detail (paket Profesional): `#/produk/<id>`, `#/event/<id>`, `#/berita/<id>`.
+
+## Akun demo panel admin (RBAC)
+| Role | Login | Akses |
+|---|---|---|
+| Admin | `admin` / `admin123` | Semua menu: produk, event, berita, struktur organisasi, profil perusahaan, pesan masuk, pengguna & hak akses; menerbitkan berita |
+| Editor | `editor` / `editor123` | Produk, event, berita. Berita yang ditulis editor tersimpan sebagai **draf** sampai diterbitkan admin |
+
+Menu yang tidak boleh diakses editor tampil dengan ikon gembok dan menampilkan halaman "Akses dibatasi".
+
+## Skenario demo ke klien (±5 menit)
+1. Buka `/` → tunjukkan tiga paket dan tabel perbandingan.
+2. Buka `/standard/` lalu `/profesional/` → bandingkan tampilan dan animasi, klik salah satu produk/berita untuk halaman detail.
+3. Buka `/profesional-admin/` di satu tab dan `/admin/` di tab lain.
+4. Login sebagai **editor** → tulis berita baru → tunjukkan berita belum tampil (masih draf) → coba buka menu Pengguna (terkunci).
+5. Keluar, login sebagai **admin** → klik **Terbitkan** → berita langsung muncul di tab website.
+6. Isi form kontak di website → pesan masuk di menu **Pesan Masuk** admin.
+7. Tombol **Reset data demo** (khusus admin) mengembalikan semua data ke kondisi awal.
 
 ## Deploy ke Vercel
+1. Upload folder ini ke repository GitHub.
+2. Di vercel.com: **Add New → Project** → import repository → Framework Preset **Other** → kosongkan Build Command dan Output Directory → **Deploy**.
+   Atau lewat CLI: `npm i -g vercel` lalu `vercel --prod` di dalam folder ini.
 
-**Cara 1 — lewat dashboard (paling mudah)**
-1. Upload folder ini ke repository GitHub/GitLab.
-2. Di vercel.com, pilih **Add New → Project**, lalu import repository tersebut.
-3. Framework Preset: **Other**. Build Command dan Output Directory dikosongkan.
-4. Klik **Deploy**.
+Uji lokal: `npx serve .` atau `python3 -m http.server`.
 
-**Cara 2 — lewat CLI**
-```bash
-npm i -g vercel
-cd company-profile
-vercel          # deploy preview
-vercel --prod   # deploy produksi
-```
+## Mengganti konten
+- Semua konten ada di `assets/js/data.js` (profil, produk, event, berita, struktur, alamat & peta, WhatsApp).
+- Logo: fungsi `logo()` di `data.js` dan SVG di `profesional*/index.html` (preloader). Ganti dengan logo resmi.
+- Warna: variabel `:root` di `assets/css/*.css` (hijau tua + amber mengikuti dokumen penawaran).
+- SEO: ubah `canonical`, meta description, dan JSON-LD di setiap `index.html`. Google Analytics: ganti `G-XXXXXXXXXX` dan hapus tanda komentar.
+- Foto contoh di-hotlink dari Unsplash; untuk produksi gunakan foto milik klien di `assets/img/`.
 
-Mau mencoba di komputer sendiri? Jalankan `npx serve .` atau `python3 -m http.server`, lalu buka `http://localhost:3000` atau `:8000`.
+## Catatan teknis (mockup vs produksi)
+Pada mockup, data panel admin, akun, pesan, dan log aktivitas disimpan di **localStorage browser**, sehingga:
+- perubahan hanya terlihat di browser yang sama (cukup untuk demo);
+- login dan pengecekan role belum aman.
 
-## Struktur folder
-```
-├── index.html              halaman pilihan paket
-├── standard/index.html
-├── profesional/index.html
-├── profesional-admin/index.html   (sama dengan profesional + window.CP_USE_STORE = true)
-├── admin/index.html
-├── assets/
-│   ├── js/data.js          ← SEMUA KONTEN ada di sini (profil, layanan, event, struktur, dll.)
-│   ├── js/standard.js      render paket Standar
-│   ├── js/pro.js           render + animasi paket Profesional
-│   ├── js/admin.js         panel admin
-│   └── css/                standard.css, pro.css, admin.css
-└── vercel.json
-```
-
-## Mengganti konten untuk klien
-- Edit `assets/js/data.js`: nama perusahaan, tagline, visi-misi, layanan, event, struktur, foto, nomor WhatsApp.
-- Warna: ubah variabel `:root` di file CSS masing-masing paket (`--primary`/`--accent` untuk Standar, `--sun1`/`--sun2`/`--ink` untuk Profesional).
-- Logo: fungsi `logo()` di `data.js`. Ganti dengan `<img src="...">` bila klien punya file logo.
-- Foto demo diambil dari Unsplash (hotlink). Untuk produksi, simpan foto klien di `assets/img/` lalu ganti URL-nya.
-- Harga paket di `index.html` hanya contoh.
-
-## Catatan penting paket + Admin
-Panel admin pada mockup ini menyimpan data di **localStorage browser**, jadi:
-- Perubahan hanya terlihat di browser yang sama (cocok untuk demo ke klien).
-- Login `admin/admin123` hanya untuk demo, **bukan pengamanan sungguhan**.
-
-Untuk produksi, sambungkan ke backend (Spring Boot, Laravel, Node, Supabase, dll.):
-1. Ganti `CP.getData`, `CP.saveData`, `CP.getMessages`, `CP.saveMessages`, `CP.addMessage` di `data.js` dengan `fetch()` ke API Anda.
-2. Pindahkan login ke server (JWT/session), dan lindungi endpoint tulis.
-3. Simpan upload gambar ke object storage (mis. S3/MinIO) sebagai ganti input URL.
-
-Struktur data JSON-nya sudah siap dipakai sebagai kontrak API (`company`, `services[]`, `events[]`, `organization[]` dengan relasi `parent`, `messages[]`).
-
-## Animasi paket Profesional
-Preloader, transisi tirai antarhalaman, reveal teks per kata, scroll reveal, parallax gambar, counter angka, marquee klien, spotlight kursor pada kartu layanan, tombol magnetik, hitung mundur event, filter + pencarian event dengan animasi, modal detail, slider testimoni, timeline dengan garis progres, highlight teks saat scroll, FAQ accordion, progress bar scroll, dan header yang tersembunyi saat scroll ke bawah.
-Semua animasi otomatis dimatikan bila pengguna mengaktifkan *reduce motion* di perangkatnya.
+Untuk produksi (paket + Panel Admin), sambungkan ke backend: ganti fungsi `CP.getData / saveData / getMessages / addMessage / getUsers / addLog` di `data.js` dengan `fetch()` ke API, simpan password ter-hash, periksa role di server untuk setiap endpoint, dan simpan unggahan gambar di object storage. Struktur JSON di `data.js` dapat langsung dipakai sebagai kontrak API.

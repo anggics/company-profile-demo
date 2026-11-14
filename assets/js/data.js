@@ -1,12 +1,11 @@
 /* =====================================================================
-   DATA KONTEN WEBSITE  —  edit file ini untuk mengganti isi website.
-   Dipakai oleh paket Standar, Profesional, dan Profesional + Admin.
-   (Pada paket + Admin, isi bisa diubah langsung dari panel admin.)
+   DATA KONTEN WEBSITE PT CAKRA PROTEKSI INDONESIA (DEMO)
+   Edit file ini untuk mengganti isi website.
+   Dipakai paket Standar, Profesional, dan Profesional + Panel Admin.
    ===================================================================== */
 (function () {
   'use strict';
 
-  /* ---------- Ikon (SVG garis, gaya Lucide) ---------- */
   const ICONS = {
     briefcase: '<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
     code: '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
@@ -47,7 +46,21 @@
     up: '<polyline points="18 15 12 9 6 15"/>',
     quote: '<path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/>',
     lock: '<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
-    refresh: '<polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>'
+    refresh: '<polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>',
+    flame: '<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>',
+    bell: '<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>',
+    droplet: '<path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>',
+    camera: '<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>',
+    clipboard: '<path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><polyline points="9 14 11 16 15 12"/>',
+    news: '<path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/>',
+    package: '<line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>',
+    usercheck: '<path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/>',
+    map: '<polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/>',
+    wrench: '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
+    back: '<line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>',
+    link: '<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>',
+    user: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+    activity: '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>'
   };
 
   function icon(name, size, sw) {
@@ -55,122 +68,185 @@
     return '<svg class="ic" width="' + size + '" height="' + size + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="' + sw + '" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICONS[name] || ICONS.layers) + '</svg>';
   }
 
+  // Logo demo (perisai). Ganti dengan logo resmi klien: return '<img src="/assets/img/logo.svg" ...>'
   function logo(size) {
     size = size || 34;
     return '<svg class="logo-mark" width="' + size + '" height="' + size + '" viewBox="0 0 32 32" aria-hidden="true">' +
       '<rect width="32" height="32" rx="9" fill="currentColor"/>' +
-      '<path d="M8 21.5a8 8 0 0 1 16 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/>' +
-      '<path d="M6 25h20" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>' +
-      '<path d="M16 7.5v3M9.6 10l2 2M22.4 10l-2 2" stroke="#f7b733" stroke-width="2.2" stroke-linecap="round"/></svg>';
+      '<path d="M16 6.5l7.5 2.8v5.6c0 4.7-3.2 8.2-7.5 9.6-4.3-1.4-7.5-4.9-7.5-9.6V9.3z" stroke="#fff" stroke-width="2.2" fill="none" stroke-linejoin="round"/>' +
+      '<path d="M12.6 15.6l2.4 2.4 4.6-4.8" stroke="#f2b33d" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   }
 
   const IMG = (id, w) => 'https://images.unsplash.com/' + id + '?auto=format&fit=crop&w=' + (w || 1200) + '&q=70';
 
-  /* ---------- Konten default ---------- */
+  /* =================================================================
+     KONTEN DEMO — semua teks di bawah adalah CONTOH (placeholder).
+     Ganti dengan data resmi PT Cakra Proteksi Indonesia.
+     ================================================================= */
   const DEFAULT = {
     company: {
-      name: 'PT Arunika Solusi Nusantara',
-      short: 'Arunika',
-      tagline: 'Mitra transformasi digital untuk bisnis Indonesia',
-      about: 'Arunika adalah perusahaan konsultan dan pengembang solusi teknologi yang membantu perusahaan, instansi, dan UMKM bertumbuh melalui sistem digital yang tepat guna. Kami menggabungkan strategi bisnis, desain, dan rekayasa perangkat lunak dalam satu tim yang solid.',
-      aboutLong: 'Berawal dari studio kecil di Jakarta Selatan pada 2012, kini Arunika didukung lebih dari 120 profesional di bidang konsultasi bisnis, pengembangan perangkat lunak, data, dan keamanan siber. Nama Arunika berarti "cahaya matahari pagi" — semangat kami untuk membawa awal yang baru bagi setiap klien. Kami percaya teknologi terbaik adalah teknologi yang benar-benar dipakai, mudah dirawat, dan memberi dampak terukur bagi bisnis.',
-      founded: 2012,
-      address: 'Menara Arunika Lt. 12, Jl. Jend. Sudirman Kav. 52, Jakarta Selatan 12190',
-      phone: '(021) 5099 1234',
-      email: 'halo@arunika.co.id',
+      name: 'PT Cakra Proteksi Indonesia',
+      short: 'Cakra Proteksi',
+      tagline: 'Melindungi aset dan nyawa dengan proteksi terpercaya',
+      about: 'PT Cakra Proteksi Indonesia adalah penyedia sistem proteksi kebakaran dan perlengkapan keselamatan kerja untuk gedung perkantoran, pabrik, rumah sakit, dan fasilitas publik. Kami melayani pengadaan, instalasi, inspeksi, hingga perawatan berkala.',
+      aboutLong: 'Berawal dari bengkel isi ulang APAR di Jakarta Timur, Cakra Proteksi kini didukung tim teknisi bersertifikat yang menangani proyek proteksi kebakaran di berbagai provinsi. Nama Cakra melambangkan perlindungan yang menyeluruh — dari pencegahan, deteksi dini, hingga pemadaman. Kami percaya keselamatan bukan sekadar kewajiban regulasi, tetapi investasi untuk melindungi orang-orang yang bekerja di dalamnya.',
+      founded: 2014,
+      address: 'Jl. Raya Bekasi Km. 21, Pulogadung, Jakarta Timur 13920',
+      mapQuery: 'Pulogadung, Jakarta Timur',
+      phone: '(021) 4600 1234',
+      email: 'info@cakraproteksi.co.id',
       whatsapp: '6281234567890',
       hours: 'Senin – Jumat, 08.00 – 17.00 WIB',
-      vision: 'Menjadi mitra teknologi paling tepercaya bagi bisnis Indonesia dalam membangun masa depan yang efisien, aman, dan berkelanjutan.',
+      vision: 'Menjadi mitra proteksi kebakaran dan keselamatan kerja yang paling tepercaya di Indonesia.',
       mission: [
-        'Menghadirkan solusi digital yang tepat guna dan berdampak langsung pada kinerja bisnis klien.',
-        'Membangun tim profesional yang berintegritas, kompeten, dan terus belajar.',
-        'Menjaga kualitas layanan melalui standar kerja yang terukur dan transparan.',
-        'Berkontribusi pada ekosistem digital nasional melalui edukasi dan program sosial.'
+        'Menyediakan produk proteksi kebakaran dan keselamatan yang berkualitas dan bersertifikat.',
+        'Memberikan layanan instalasi, inspeksi, dan perawatan yang tepat waktu dan sesuai standar.',
+        'Mengedukasi masyarakat dan dunia usaha tentang budaya keselamatan kerja.',
+        'Membangun tim profesional yang kompeten, jujur, dan responsif.'
       ],
       values: [
-        { icon: 'shield', title: 'Integritas', desc: 'Jujur, transparan, dan bertanggung jawab di setiap keputusan.' },
-        { icon: 'target', title: 'Fokus pada Hasil', desc: 'Setiap pekerjaan diukur dari dampaknya bagi klien.' },
-        { icon: 'users', title: 'Kolaborasi', desc: 'Klien adalah bagian dari tim, bukan sekadar pemesan.' },
-        { icon: 'zap', title: 'Inovasi', desc: 'Terus mencari cara yang lebih baik, lebih cepat, lebih sederhana.' }
+        { icon: 'shield', title: 'Keselamatan Utama', desc: 'Setiap keputusan berawal dari pertanyaan: apakah ini aman?' },
+        { icon: 'clipboard', title: 'Patuh Standar', desc: 'Produk dan pekerjaan mengikuti standar nasional dan internasional.' },
+        { icon: 'zap', title: 'Responsif', desc: 'Cepat tanggap saat klien membutuhkan, termasuk kondisi darurat.' },
+        { icon: 'users', title: 'Integritas', desc: 'Jujur dalam penawaran, transparan dalam pengerjaan.' }
       ],
       history: [
-        { year: '2012', title: 'Arunika berdiri', desc: 'Dimulai sebagai studio pengembangan web dengan 5 orang di Jakarta Selatan.' },
-        { year: '2015', title: 'Ekspansi layanan konsultasi', desc: 'Membuka divisi konsultasi bisnis dan transformasi digital untuk korporasi.' },
-        { year: '2018', title: 'Sertifikasi ISO 9001 & 27001', desc: 'Menegaskan standar mutu dan keamanan informasi di seluruh proses kerja.' },
-        { year: '2021', title: 'Kantor cabang Surabaya & Makassar', desc: 'Memperluas jangkauan layanan ke Indonesia Timur dan Jawa Timur.' },
-        { year: '2024', title: 'Peluncuran Arunika Cloud', desc: 'Platform cloud terkelola untuk UMKM dan instansi pemerintah daerah.' },
-        { year: '2026', title: '120+ profesional, 350+ proyek', desc: 'Dipercaya ratusan klien di 24 kota di seluruh Indonesia.' }
+        { year: '2014', title: 'Cakra Proteksi berdiri', desc: 'Dimulai sebagai layanan penjualan dan isi ulang APAR di Jakarta Timur.' },
+        { year: '2017', title: 'Divisi instalasi sistem', desc: 'Mulai menangani instalasi fire alarm, hydrant, dan sprinkler untuk gedung.' },
+        { year: '2020', title: 'Layanan inspeksi berkala', desc: 'Membuka layanan inspeksi dan perawatan rutin dengan laporan digital.' },
+        { year: '2023', title: 'Ekspansi ke luar Jawa', desc: 'Melayani proyek kawasan industri di Sumatra dan Kalimantan.' },
+        { year: '2026', title: 'Transformasi digital', desc: 'Meluncurkan website resmi sebagai pusat informasi produk, event, dan berita.' }
       ],
       stats: [
-        { value: 14, suffix: '+', label: 'Tahun pengalaman' },
-        { value: 350, suffix: '+', label: 'Proyek selesai' },
-        { value: 180, suffix: '+', label: 'Klien aktif' },
-        { value: 24, suffix: '', label: 'Kota terlayani' }
+        { value: 12, suffix: '+', label: 'Tahun pengalaman' },
+        { value: 500, suffix: '+', label: 'Proyek terpasang' },
+        { value: 300, suffix: '+', label: 'Klien korporat' },
+        { value: 18, suffix: '', label: 'Provinsi terlayani' }
       ],
-      heroImage: IMG('photo-1497366216548-37526070297c', 1400),
+      heroImage: IMG('photo-1486406146926-c627a92ad1ab', 1400),
       aboutImage: IMG('photo-1522071820081-009f0129c71c', 1200),
       aboutImage2: IMG('photo-1600880292203-757bb62b4baf', 900)
     },
 
-    services: [
-      { id: 's1', icon: 'briefcase', title: 'Konsultasi Bisnis & Digital', short: 'Strategi transformasi digital yang realistis dan terukur.', desc: 'Kami memetakan proses bisnis, menemukan titik lemah, dan menyusun peta jalan digital yang sesuai anggaran serta kesiapan tim Anda.', features: ['Audit proses bisnis', 'Peta jalan transformasi digital', 'Analisis kelayakan & ROI', 'Pendampingan manajemen perubahan'] },
-      { id: 's2', icon: 'code', title: 'Pengembangan Aplikasi', short: 'Aplikasi web & mobile yang andal dan mudah dirawat.', desc: 'Dari sistem internal perusahaan hingga aplikasi untuk pelanggan, dibangun dengan arsitektur modern dan dokumentasi lengkap.', features: ['Aplikasi web & mobile', 'Sistem ERP & HRIS kustom', 'Integrasi API & payment gateway', 'Pemeliharaan & dukungan teknis'] },
-      { id: 's3', icon: 'cloud', title: 'Cloud & Infrastruktur', short: 'Infrastruktur cloud yang aman, stabil, dan hemat biaya.', desc: 'Migrasi, pengelolaan, dan optimasi infrastruktur cloud dengan pemantauan 24/7 oleh tim kami.', features: ['Migrasi ke cloud', 'Managed server 24/7', 'Backup & disaster recovery', 'Optimasi biaya cloud'] },
-      { id: 's4', icon: 'shield', title: 'Keamanan Siber', short: 'Lindungi data dan reputasi perusahaan Anda.', desc: 'Pengujian keamanan, kepatuhan regulasi, dan pelatihan kesadaran keamanan untuk seluruh karyawan.', features: ['Penetration testing', 'Audit kepatuhan UU PDP', 'Security awareness training', 'Respons insiden'] },
-      { id: 's5', icon: 'chart', title: 'Data & Analitik', short: 'Ubah data menjadi keputusan yang lebih baik.', desc: 'Membangun dashboard, gudang data, dan model analitik agar manajemen dapat mengambil keputusan berbasis data.', features: ['Dashboard bisnis real-time', 'Data warehouse', 'Analitik prediktif', 'Pelatihan literasi data'] },
-      { id: 's6', icon: 'users', title: 'Pelatihan & SDM Digital', short: 'Tingkatkan kompetensi digital tim Anda.', desc: 'Program pelatihan terstruktur untuk karyawan, dari literasi digital dasar hingga keahlian teknis tingkat lanjut.', features: ['Kurikulum sesuai kebutuhan', 'Kelas tatap muka & daring', 'Sertifikat kompetensi', 'Evaluasi pasca-pelatihan'] }
+    products: [
+      { id: 'p1', icon: 'flame', category: 'Alat Pemadam Api', name: 'APAR Powder ABC 6 kg', image: '',
+        short: 'Pemadam serbaguna untuk kebakaran kelas A, B, dan C.',
+        desc: 'Alat pemadam api ringan berbahan dry chemical powder yang efektif untuk kebakaran bahan padat, cairan mudah terbakar, dan instalasi listrik. Cocok untuk kantor, gudang, dan area produksi.',
+        specs: [['Media', 'Dry chemical powder ABC'], ['Kapasitas', '6 kg'], ['Jarak semprot', '± 5 meter'], ['Durasi semprot', '± 15 detik'], ['Garansi', '1 tahun']],
+        features: ['Tabung baja dengan pengukur tekanan', 'Sudah termasuk bracket dinding', 'Gratis label dan kartu inspeksi', 'Layanan isi ulang tersedia'] },
+      { id: 'p2', icon: 'flame', category: 'Alat Pemadam Api', name: 'APAR CO2 5 kg', image: '',
+        short: 'Pemadam bersih tanpa residu untuk ruang server dan panel listrik.',
+        desc: 'Menggunakan gas karbon dioksida yang tidak meninggalkan residu, ideal untuk ruang server, panel listrik, laboratorium, dan peralatan elektronik bernilai tinggi.',
+        specs: [['Media', 'Karbon dioksida (CO2)'], ['Kapasitas', '5 kg'], ['Jarak semprot', '± 2 meter'], ['Kelas kebakaran', 'B dan C'], ['Garansi', '1 tahun']],
+        features: ['Tidak merusak perangkat elektronik', 'Corong semprot anti-beku', 'Termasuk bracket dinding', 'Uji tekanan berkala'] },
+      { id: 'p3', icon: 'bell', category: 'Sistem Deteksi', name: 'Sistem Fire Alarm Konvensional', image: '',
+        short: 'Deteksi dini asap dan panas untuk gedung bertingkat.',
+        desc: 'Paket sistem alarm kebakaran yang terdiri dari panel kontrol, detektor asap, detektor panas, manual call point, dan alarm bell. Dirancang sesuai luas dan fungsi bangunan.',
+        specs: [['Panel', '4 – 16 zona'], ['Detektor', 'Asap & panas'], ['Catu daya', 'AC + baterai cadangan'], ['Instalasi', 'Termasuk desain & commissioning']],
+        features: ['Survei lokasi tanpa biaya', 'Gambar desain sistem', 'Pelatihan operator', 'Garansi instalasi 1 tahun'] },
+      { id: 'p4', icon: 'droplet', category: 'Sistem Pemadam', name: 'Sistem Fire Hydrant', image: '',
+        short: 'Jaringan hydrant indoor dan outdoor untuk area luas.',
+        desc: 'Instalasi sistem hydrant lengkap mulai dari pompa, jaringan pipa, hydrant box, hingga hydrant pillar untuk kawasan pabrik, gudang, dan gedung bertingkat.',
+        specs: [['Komponen', 'Pompa, pipa, box, pillar'], ['Pompa', 'Elektrik, diesel, jockey'], ['Pipa', 'Baja hitam schedule 40'], ['Pengujian', 'Uji tekanan & aliran']],
+        features: ['Perhitungan kebutuhan air', 'Gambar kerja & as-built drawing', 'Pengujian sebelum serah terima', 'Kontrak perawatan tersedia'] },
+      { id: 'p5', icon: 'droplet', category: 'Sistem Pemadam', name: 'Sistem Sprinkler Otomatis', image: '',
+        short: 'Pemadaman otomatis yang aktif saat suhu ruangan naik.',
+        desc: 'Kepala sprinkler akan pecah dan menyemprotkan air secara otomatis pada suhu tertentu, sehingga api terkendali sejak awal bahkan saat bangunan kosong.',
+        specs: [['Tipe', 'Pendent, upright, sidewall'], ['Suhu aktif', '68 °C (standar)'], ['Cakupan', 'Sesuai klasifikasi bahaya'], ['Integrasi', 'Fire alarm & pompa']],
+        features: ['Desain sesuai klasifikasi hunian', 'Material bersertifikat', 'Flushing & uji tekanan', 'Dokumentasi lengkap'] },
+      { id: 'p6', icon: 'shield', category: 'Perlengkapan K3', name: 'Paket Alat Pelindung Diri (APD)', image: '',
+        short: 'Helm, rompi, sepatu, dan sarung tangan keselamatan.',
+        desc: 'Paket APD standar untuk pekerja lapangan, proyek konstruksi, dan area produksi. Tersedia dalam berbagai ukuran dan bisa dicetak logo perusahaan.',
+        specs: [['Isi paket', 'Helm, rompi, sepatu, sarung tangan'], ['Ukuran', 'S – XXL'], ['Kustom', 'Cetak logo perusahaan'], ['Minimal order', '10 paket']],
+        features: ['Material sesuai standar keselamatan', 'Pilihan warna sesuai divisi', 'Pengiriman ke seluruh Indonesia', 'Harga khusus pembelian partai'] }
     ],
 
     events: [
-      { id: 'e1', title: 'Workshop Transformasi Digital untuk UMKM', category: 'Workshop', date: '2026-11-27', time: '13.00 – 17.00 WIB', location: 'Menara Arunika, Jakarta', image: IMG('photo-1552664730-d307ca884978'), desc: 'Workshop praktis bagi pelaku UMKM untuk mulai mendigitalkan pencatatan keuangan, penjualan, dan pemasaran. Kuota terbatas 60 peserta.' },
-      { id: 'e2', title: 'Indonesia Digital Business Summit 2026', category: 'Konferensi', date: '2026-12-04', time: '09.00 – 16.00 WIB', location: 'Jakarta Convention Center', image: IMG('photo-1540575467063-178a50c2df87'), desc: 'Konferensi tahunan yang mempertemukan pemimpin bisnis, regulator, dan praktisi teknologi untuk membahas arah ekonomi digital Indonesia.' },
-      { id: 'e3', title: 'Webinar: Kepatuhan UU Perlindungan Data Pribadi', category: 'Webinar', date: '2027-01-15', time: '10.00 – 12.00 WIB', location: 'Daring via Zoom', image: IMG('photo-1517694712202-14dd9538aa97'), desc: 'Pembahasan langkah praktis yang perlu disiapkan perusahaan agar patuh terhadap UU PDP, lengkap dengan sesi tanya jawab.' },
-      { id: 'e4', title: 'Arunika Annual Partner Gathering', category: 'Gathering', date: '2026-08-22', time: '18.00 – 22.00 WITA', location: 'Nusa Dua, Bali', image: IMG('photo-1511795409834-ef04bbd61622'), desc: 'Malam apresiasi untuk mitra dan klien setia Arunika, dengan sesi berbagi rencana kolaborasi tahun depan.' },
-      { id: 'e5', title: 'CSR: Kelas Coding untuk Pelajar SMK', category: 'CSR', date: '2026-06-10', time: '08.00 – 15.00 WIB', location: 'SMK Negeri 1 Bandung', image: IMG('photo-1505373877841-8d25f7d46678'), desc: 'Program sosial tahunan: 200 pelajar SMK belajar dasar pemrograman web bersama engineer Arunika.' },
-      { id: 'e6', title: 'Peluncuran Platform Arunika Cloud', category: 'Peluncuran', date: '2026-03-18', time: '10.00 – 13.00 WIB', location: 'Hotel Indonesia Kempinski, Jakarta', image: IMG('photo-1475721027785-f74eccf877e2'), desc: 'Peluncuran resmi platform cloud terkelola Arunika untuk UMKM dan pemerintah daerah.' }
+      { id: 'e1', title: 'Pelatihan Penggunaan APAR untuk Karyawan', category: 'Pelatihan', date: '2026-11-26', time: '09.00 – 12.00 WIB', location: 'Workshop Cakra Proteksi, Jakarta Timur', image: IMG('photo-1552664730-d307ca884978'),
+        desc: 'Pelatihan praktik memadamkan api menggunakan APAR, mengenal kelas kebakaran, dan prosedur pelaporan keadaan darurat. Peserta mendapat sertifikat keikutsertaan.' },
+      { id: 'e2', title: 'Pameran Keselamatan Kerja & Proteksi Kebakaran 2026', category: 'Pameran', date: '2026-12-09', time: '10.00 – 18.00 WIB', location: 'JIExpo Kemayoran, Jakarta', image: IMG('photo-1540575467063-178a50c2df87'),
+        desc: 'Kunjungi booth Cakra Proteksi untuk melihat demo sistem fire alarm, sprinkler, dan produk APD terbaru. Tersedia konsultasi gratis untuk pengelola gedung.' },
+      { id: 'e3', title: 'Webinar: Kewajiban Sistem Proteksi Kebakaran pada Gedung', category: 'Webinar', date: '2027-01-20', time: '13.00 – 15.00 WIB', location: 'Daring via Zoom', image: IMG('photo-1517694712202-14dd9538aa97'),
+        desc: 'Membahas jenis sistem proteksi yang wajib ada pada gedung, cara menyiapkan inspeksi, dan tips menyusun anggaran perawatan tahunan.' },
+      { id: 'e4', title: 'Simulasi Evakuasi Kebakaran Bersama Mitra', category: 'Simulasi', date: '2026-09-17', time: '08.00 – 11.00 WIB', location: 'Kawasan Industri Pulogadung', image: IMG('photo-1505373877841-8d25f7d46678'),
+        desc: 'Simulasi evakuasi melibatkan 400 karyawan dari tiga perusahaan mitra, lengkap dengan evaluasi waktu evakuasi dan titik kumpul.' },
+      { id: 'e5', title: 'Bulan K3 Nasional: Edukasi Keselamatan di Sekolah', category: 'CSR', date: '2026-02-12', time: '08.00 – 12.00 WIB', location: 'SMK Negeri 26 Jakarta', image: IMG('photo-1511795409834-ef04bbd61622'),
+        desc: 'Program sosial dalam rangka Bulan K3 Nasional: edukasi pencegahan kebakaran dan praktik penggunaan APAR untuk pelajar.' }
+    ],
+
+    news: [
+      { id: 'n1', title: 'Mengapa APAR Wajib Diperiksa Secara Berkala?', category: 'Edukasi', date: '2026-11-10', author: 'Tim Teknis', status: 'publish', image: IMG('photo-1497366216548-37526070297c'),
+        excerpt: 'APAR yang terlihat baik dari luar belum tentu siap pakai. Ini hal-hal yang perlu dicek secara rutin.',
+        content: ['Alat pemadam api ringan (APAR) sering dianggap cukup dipasang sekali lalu dilupakan. Padahal, tekanan tabung bisa turun, media pemadam bisa menggumpal, dan selang bisa retak tanpa terlihat dari luar.', 'Pemeriksaan berkala memastikan APAR benar-benar berfungsi saat dibutuhkan. Hal yang dicek antara lain jarum pengukur tekanan, kondisi segel dan pin pengaman, kondisi selang dan nozzle, serta tanggal kedaluwarsa media pemadam.', 'Tim Cakra Proteksi menyediakan layanan inspeksi rutin dengan laporan digital dan kartu inspeksi yang ditempel di setiap unit, sehingga pengelola gedung mudah memantau kondisi seluruh APAR.'] },
+      { id: 'n2', title: 'Mengenal Kelas Kebakaran dan Jenis APAR yang Tepat', category: 'Edukasi', date: '2026-10-28', author: 'Tim Teknis', status: 'publish', image: IMG('photo-1600880292203-757bb62b4baf'),
+        excerpt: 'Salah memilih jenis APAR bisa membuat api justru membesar. Kenali kelas kebakaran sebelum membeli.',
+        content: ['Kebakaran dikelompokkan berdasarkan bahan yang terbakar. Kelas A untuk bahan padat seperti kertas dan kayu, kelas B untuk cairan dan gas mudah terbakar, kelas C untuk instalasi listrik yang bertegangan, dan kelas D untuk logam.', 'APAR powder ABC cocok untuk sebagian besar kebutuhan kantor dan gudang. Untuk ruang server dan panel listrik, APAR CO2 lebih disarankan karena tidak meninggalkan residu.', 'Jika ragu, konsultasikan kebutuhan Anda dengan tim kami. Kami akan membantu menentukan jenis, kapasitas, dan jumlah APAR sesuai luas dan fungsi ruangan.'] },
+      { id: 'n3', title: 'Cakra Proteksi Menyelesaikan Instalasi Hydrant di Kawasan Industri', category: 'Perusahaan', date: '2026-10-05', author: 'Humas', status: 'publish', image: IMG('photo-1486406146926-c627a92ad1ab'),
+        excerpt: 'Proyek instalasi hydrant untuk tiga gudang logistik selesai tepat waktu dan lolos uji tekanan.',
+        content: ['Tim proyek Cakra Proteksi telah menyelesaikan instalasi sistem fire hydrant untuk tiga gudang logistik milik mitra di kawasan industri Jawa Barat.', 'Pekerjaan mencakup pemasangan pompa, jaringan pipa utama, hydrant pillar, dan hydrant box, lalu ditutup dengan uji tekanan dan uji aliran bersama pihak pengelola kawasan.', 'Setelah serah terima, sistem ini akan dirawat melalui kontrak perawatan berkala agar selalu siap digunakan.'] },
+      { id: 'n4', title: '5 Tips Menyiapkan Jalur Evakuasi di Kantor', category: 'Tips', date: '2026-09-22', author: 'Tim K3', status: 'publish', image: IMG('photo-1522071820081-009f0129c71c'),
+        excerpt: 'Jalur evakuasi yang jelas bisa menyelamatkan nyawa. Mulai dari langkah sederhana berikut.',
+        content: ['Pertama, pastikan jalur evakuasi bebas dari barang yang menghalangi. Kedua, pasang rambu arah evakuasi yang mudah terlihat, termasuk saat listrik padam.', 'Ketiga, tentukan titik kumpul yang aman dan cukup luas. Keempat, tunjuk petugas evakuasi di setiap lantai. Kelima, lakukan simulasi secara rutin agar seluruh karyawan terbiasa.', 'Cakra Proteksi dapat membantu menyusun denah evakuasi dan memfasilitasi simulasi untuk kantor Anda.'] },
+      { id: 'n5', title: 'Rencana Program Edukasi K3 2027', category: 'Perusahaan', date: '2026-11-14', author: 'Editor', status: 'draft', image: IMG('photo-1517694712202-14dd9538aa97'),
+        excerpt: 'Rangkaian pelatihan dan simulasi keselamatan yang akan kami gelar sepanjang 2027.',
+        content: ['Ini contoh berita berstatus draf. Berita draf tidak tampil di website publik sampai admin menerbitkannya dari panel admin.'] }
     ],
 
     organization: [
-      { id: 'o1', name: 'Ir. Hendra Wijaya', position: 'Komisaris Utama', parent: '' },
-      { id: 'o2', name: 'Ratna Kusumawati, M.B.A.', position: 'Direktur Utama', parent: 'o1' },
-      { id: 'o3', name: 'Bagus Prasetyo, S.T.', position: 'Direktur Operasional', parent: 'o2' },
-      { id: 'o4', name: 'Sari Andriani, S.E., Ak.', position: 'Direktur Keuangan', parent: 'o2' },
-      { id: 'o5', name: 'Dimas Aryaguna, M.M.', position: 'Direktur Pemasaran', parent: 'o2' },
-      { id: 'o6', name: 'Fajar Nugroho', position: 'Manajer Teknologi', parent: 'o3' },
-      { id: 'o7', name: 'Intan Permatasari', position: 'Manajer Proyek', parent: 'o3' },
-      { id: 'o8', name: 'Yoga Saputra', position: 'Manajer Akuntansi', parent: 'o4' },
-      { id: 'o9', name: 'Melati Anggraini', position: 'Manajer SDM & Umum', parent: 'o4' },
-      { id: 'o10', name: 'Rizky Ramadhan', position: 'Manajer Pemasaran Digital', parent: 'o5' },
-      { id: 'o11', name: 'Nadia Putri', position: 'Manajer Hubungan Klien', parent: 'o5' }
+      { id: 'o1', name: 'Ir. Hadi Santoso', position: 'Komisaris Utama', parent: '' },
+      { id: 'o2', name: 'Andika Pratama, S.T., M.M.', position: 'Direktur Utama', parent: 'o1' },
+      { id: 'o3', name: 'Rudi Hartanto, S.T.', position: 'Direktur Operasional', parent: 'o2' },
+      { id: 'o4', name: 'Lestari Wulandari, S.E.', position: 'Direktur Keuangan & Umum', parent: 'o2' },
+      { id: 'o5', name: 'Fikri Maulana, S.Kom.', position: 'Direktur Pemasaran', parent: 'o2' },
+      { id: 'o6', name: 'Agus Setiawan', position: 'Manajer Teknik & Instalasi', parent: 'o3' },
+      { id: 'o7', name: 'Bayu Firmansyah', position: 'Manajer Inspeksi & Perawatan', parent: 'o3' },
+      { id: 'o8', name: 'Dewi Kartika', position: 'Manajer Keuangan', parent: 'o4' },
+      { id: 'o9', name: 'Siti Nurhaliza', position: 'Manajer HRD & GA', parent: 'o4' },
+      { id: 'o10', name: 'Rina Marlina', position: 'Manajer Penjualan', parent: 'o5' },
+      { id: 'o11', name: 'Yusuf Hidayat', position: 'Manajer Pemasaran Digital', parent: 'o5' }
     ],
 
-    clients: ['Bank Sentosa', 'Medika Group', 'Pelita Logistik', 'Kopi Senja', 'Pemkab Maju', 'Astana Properti', 'Nusa Retail', 'Garuda Agro', 'Sinar Energi', 'EduKita'],
+    clients: ['Gedung Perkantoran', 'Kawasan Industri', 'Rumah Sakit', 'Pusat Perbelanjaan', 'Gudang Logistik', 'Hotel & Resort', 'Sekolah & Kampus', 'Apartemen', 'Pabrik Manufaktur', 'Instansi Pemerintah'],
 
     testimonials: [
-      { name: 'Andi Kurniawan', role: 'Direktur, Pelita Logistik', text: 'Tim Arunika memahami bisnis kami sebelum menulis satu baris kode. Sistem pelacakan armada yang mereka bangun memangkas waktu laporan dari dua hari menjadi hitungan menit.' },
-      { name: 'dr. Maya Lestari', role: 'COO, Medika Group', text: 'Proses migrasi ke cloud berjalan tanpa gangguan layanan pasien. Komunikasinya rapi, jadwalnya tepat, dan dukungan pascaproyek sangat responsif.' },
-      { name: 'Teguh Santoso', role: 'Pemilik, Kopi Senja', text: 'Sebagai UMKM kami butuh mitra yang sabar dan jelas. Sekarang penjualan di 9 cabang bisa saya pantau langsung dari ponsel.' }
+      { name: 'Hendra Gunawan', role: 'Building Manager, Gedung Perkantoran (contoh)', text: 'Inspeksi rutin dari Cakra Proteksi sangat rapi. Laporannya jelas, sehingga kami siap setiap kali ada audit keselamatan gedung.' },
+      { name: 'Maria Ulfa', role: 'HSE Officer, Pabrik Manufaktur (contoh)', text: 'Instalasi hydrant selesai sesuai jadwal tanpa mengganggu produksi. Tim teknisinya komunikatif dan paham standar.' },
+      { name: 'Dodi Kurniawan', role: 'Pemilik Gudang Logistik (contoh)', text: 'Pemesanan APAR dan APD cepat, harganya transparan, dan pelatihan karyawannya sangat membantu.' }
     ],
 
     faq: [
-      { q: 'Berapa lama waktu pengerjaan sebuah proyek?', a: 'Tergantung ruang lingkupnya. Proyek konsultasi umumnya 2–6 minggu, sedangkan pengembangan aplikasi 2–6 bulan. Jadwal rinci kami sampaikan setelah sesi analisis kebutuhan.' },
-      { q: 'Apakah ada layanan setelah proyek selesai?', a: 'Ada. Setiap proyek mendapat masa garansi, dan tersedia paket pemeliharaan bulanan dengan SLA yang jelas.' },
-      { q: 'Apakah Arunika melayani klien di luar Jakarta?', a: 'Ya. Kami memiliki kantor di Jakarta, Surabaya, dan Makassar, serta melayani klien di seluruh Indonesia secara daring maupun tatap muka.' },
-      { q: 'Bagaimana cara memulai kerja sama?', a: 'Isi formulir kontak atau hubungi kami melalui WhatsApp. Tim kami akan menjadwalkan sesi konsultasi awal tanpa biaya.' }
+      { q: 'Apakah tersedia survei lokasi sebelum penawaran?', a: 'Ya. Tim kami akan melakukan survei lokasi tanpa biaya untuk menentukan kebutuhan sistem proteksi yang tepat.' },
+      { q: 'Berapa lama proses instalasi sistem proteksi kebakaran?', a: 'Tergantung luas dan jenis sistem. Pemasangan APAR bisa selesai dalam hitungan hari, sedangkan hydrant atau sprinkler umumnya beberapa minggu.' },
+      { q: 'Apakah melayani isi ulang dan perawatan APAR?', a: 'Ya. Kami melayani isi ulang, inspeksi berkala, dan kontrak perawatan tahunan dengan laporan digital.' },
+      { q: 'Apakah bisa mengirim ke luar Jakarta?', a: 'Bisa. Produk dapat dikirim ke seluruh Indonesia, dan tim instalasi kami melayani proyek di berbagai provinsi.' }
     ]
   };
 
-  /* ---------- Penyimpanan (dipakai paket + Admin) ---------- */
-  const KEY = 'arunika_cp_data_v1';
-  const MSG_KEY = 'arunika_cp_messages_v1';
+  /* ---------- Penyimpanan (paket + Panel Admin) ----------
+     Mockup memakai localStorage. Untuk produksi, ganti fungsi-fungsi
+     ini dengan fetch() ke API backend. */
+  const KEY = 'cakra_cp_data_v1';
+  const MSG_KEY = 'cakra_cp_messages_v1';
+  const USER_KEY = 'cakra_cp_users_v1';
+  const LOG_KEY = 'cakra_cp_log_v1';
   const clone = (o) => JSON.parse(JSON.stringify(o));
   function sGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
   function sSet(k, v) { try { localStorage.setItem(k, v); return true; } catch (e) { return false; } }
   function sDel(k) { try { localStorage.removeItem(k); } catch (e) { /* abaikan */ } }
+  function sJSON(k, fallback) { const raw = sGet(k); if (!raw) return clone(fallback); try { return JSON.parse(raw); } catch (e) { return clone(fallback); } }
 
   const DEFAULT_MESSAGES = [
-    { id: 'm1', name: 'Budi Hartono', email: 'budi@contoh.co.id', company: 'CV Maju Bersama', service: 'Pengembangan Aplikasi', message: 'Kami ingin membuat aplikasi kasir untuk 4 cabang toko. Mohon info estimasi biaya dan waktu.', date: '2026-11-12T09:14:00', read: false },
-    { id: 'm2', name: 'Siti Rahmawati', email: 'siti.r@contoh.com', company: 'Dinas Kominfo Kab. Maju', service: 'Cloud & Infrastruktur', message: 'Apakah Arunika Cloud bisa dipakai untuk aplikasi layanan publik pemerintah daerah?', date: '2026-11-10T14:40:00', read: true }
+    { id: 'm1', name: 'Bambang Sutrisno', email: 'bambang@contoh.co.id', company: 'PT Gudang Sejahtera (contoh)', topic: 'Sistem Fire Hydrant', message: 'Mohon penawaran instalasi hydrant untuk gudang seluas 2.000 m² di Cikarang.', date: '2026-11-13T10:20:00', read: false },
+    { id: 'm2', name: 'Nurul Aini', email: 'nurul@contoh.com', company: 'Klinik Sehat (contoh)', topic: 'APAR CO2 5 kg', message: 'Kami butuh 6 unit APAR untuk klinik 2 lantai. Apakah termasuk pemasangan?', date: '2026-11-11T15:05:00', read: true }
+  ];
+  // Akun demo. Untuk produksi, autentikasi WAJIB di server (password di-hash, token/session).
+  const DEFAULT_USERS = [
+    { id: 'u1', name: 'Administrator', username: 'admin', password: 'admin123', role: 'admin' },
+    { id: 'u2', name: 'Editor Konten', username: 'editor', password: 'editor123', role: 'editor' }
+  ];
+  const DEFAULT_LOG = [
+    { at: '2026-11-14T09:12:00', user: 'Editor Konten', role: 'editor', text: 'membuat draf berita “Rencana Program Edukasi K3 2027”' },
+    { at: '2026-11-10T08:30:00', user: 'Administrator', role: 'admin', text: 'menerbitkan berita “Mengapa APAR Wajib Diperiksa Secara Berkala?”' }
   ];
 
   const CP = {
@@ -186,18 +262,23 @@
       } catch (e) { return base; }
     },
     saveData(d) { return sSet(KEY, JSON.stringify(d)); },
-    resetData() { sDel(KEY); sDel(MSG_KEY); },
-    getMessages() {
-      const raw = sGet(MSG_KEY);
-      if (!raw) return clone(DEFAULT_MESSAGES);
-      try { return JSON.parse(raw); } catch (e) { return clone(DEFAULT_MESSAGES); }
-    },
+    resetData() { [KEY, MSG_KEY, USER_KEY, LOG_KEY].forEach(sDel); },
+    getMessages() { return sJSON(MSG_KEY, DEFAULT_MESSAGES); },
     saveMessages(list) { return sSet(MSG_KEY, JSON.stringify(list)); },
     addMessage(m) {
       const list = CP.getMessages();
       list.unshift(Object.assign({ id: 'm' + Date.now(), date: new Date().toISOString(), read: false }, m));
       return CP.saveMessages(list);
     },
+    getUsers() { return sJSON(USER_KEY, DEFAULT_USERS); },
+    saveUsers(list) { return sSet(USER_KEY, JSON.stringify(list)); },
+    getLog() { return sJSON(LOG_KEY, DEFAULT_LOG); },
+    addLog(user, text) {
+      const list = CP.getLog();
+      list.unshift({ at: new Date().toISOString(), user: user.name, role: user.role, text: text });
+      return sSet(LOG_KEY, JSON.stringify(list.slice(0, 50)));
+    },
+    publishedNews(list) { return list.filter((n) => n.status !== 'draft').sort((a, b) => b.date.localeCompare(a.date)); },
     uid(prefix) { return (prefix || 'id') + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); },
     esc(s) {
       return String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -212,10 +293,7 @@
       const d = new Date(iso + 'T00:00:00');
       return { day: d.getDate(), mon: d.toLocaleDateString('id-ID', { month: 'short' }).replace('.', ''), year: d.getFullYear() };
     },
-    isUpcoming(iso) {
-      const d = new Date(iso + 'T23:59:59');
-      return d >= new Date();
-    },
+    isUpcoming(iso) { return new Date(iso + 'T23:59:59') >= new Date(); },
     sortEvents(list) {
       const up = list.filter((e) => CP.isUpcoming(e.date)).sort((a, b) => a.date.localeCompare(b.date));
       const past = list.filter((e) => !CP.isUpcoming(e.date)).sort((a, b) => b.date.localeCompare(a.date));
@@ -239,6 +317,15 @@
     },
     waLink(number, text) {
       return 'https://wa.me/' + String(number).replace(/\D/g, '') + (text ? '?text=' + encodeURIComponent(text) : '');
+    },
+    mapSrc(q) { return 'https://maps.google.com/maps?q=' + encodeURIComponent(q) + '&z=15&output=embed'; },
+    readMins(n) { return Math.max(1, Math.round((n.content || []).join(' ').split(/\s+/).length / 180)); },
+    setMeta(title, desc) {
+      document.title = title;
+      let m = document.querySelector('meta[name="description"]');
+      if (m && desc) m.setAttribute('content', desc);
+      let og = document.querySelector('meta[property="og:title"]');
+      if (og) og.setAttribute('content', title);
     }
   };
 
