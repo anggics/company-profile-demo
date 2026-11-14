@@ -1,5 +1,5 @@
 /* =====================================================================
-   DATA KONTEN WEBSITE PT CAKRA PROTEKSI INDONESIA (DEMO)
+   DATA KONTEN WEBSITE (DEMO — PT Perisai Prima Nusantara, perusahaan fiktif)
    Edit file ini untuk mengganti isi website.
    Dipakai paket Standar, Profesional, dan Profesional + Panel Admin.
    ===================================================================== */
@@ -81,20 +81,20 @@
 
   /* =================================================================
      KONTEN DEMO — semua teks di bawah adalah CONTOH (placeholder).
-     Ganti dengan data resmi PT Cakra Proteksi Indonesia.
+     Ganti dengan data resmi PT Perisai Prima Nusantara.
      ================================================================= */
   const DEFAULT = {
     company: {
-      name: 'PT Cakra Proteksi Indonesia',
-      short: 'Cakra Proteksi',
+      name: 'PT Perisai Prima Nusantara',
+      short: 'Perisai Prima',
       tagline: 'Melindungi aset dan nyawa dengan proteksi terpercaya',
-      about: 'PT Cakra Proteksi Indonesia adalah penyedia sistem proteksi kebakaran dan perlengkapan keselamatan kerja untuk gedung perkantoran, pabrik, rumah sakit, dan fasilitas publik. Kami melayani pengadaan, instalasi, inspeksi, hingga perawatan berkala.',
-      aboutLong: 'Berawal dari bengkel isi ulang APAR di Jakarta Timur, Cakra Proteksi kini didukung tim teknisi bersertifikat yang menangani proyek proteksi kebakaran di berbagai provinsi. Nama Cakra melambangkan perlindungan yang menyeluruh — dari pencegahan, deteksi dini, hingga pemadaman. Kami percaya keselamatan bukan sekadar kewajiban regulasi, tetapi investasi untuk melindungi orang-orang yang bekerja di dalamnya.',
+      about: 'PT Perisai Prima Nusantara adalah penyedia sistem proteksi kebakaran dan perlengkapan keselamatan kerja untuk gedung perkantoran, pabrik, rumah sakit, dan fasilitas publik. Kami melayani pengadaan, instalasi, inspeksi, hingga perawatan berkala.',
+      aboutLong: 'Berawal dari bengkel isi ulang APAR di Jakarta Timur, Perisai Prima kini didukung tim teknisi bersertifikat yang menangani proyek proteksi kebakaran di berbagai provinsi. Nama Perisai melambangkan perlindungan yang menyeluruh — dari pencegahan, deteksi dini, hingga pemadaman. Kami percaya keselamatan bukan sekadar kewajiban regulasi, tetapi investasi untuk melindungi orang-orang yang bekerja di dalamnya.',
       founded: 2014,
-      address: 'Jl. Raya Bekasi Km. 21, Pulogadung, Jakarta Timur 13920',
+      address: 'Jl. Contoh Raya No. 21, Pulogadung, Jakarta Timur',
       mapQuery: 'Pulogadung, Jakarta Timur',
       phone: '(021) 4600 1234',
-      email: 'info@cakraproteksi.co.id',
+      email: 'info@perisaiprima.example',
       whatsapp: '6281234567890',
       hours: 'Senin – Jumat, 08.00 – 17.00 WIB',
       vision: 'Menjadi mitra proteksi kebakaran dan keselamatan kerja yang paling tepercaya di Indonesia.',
@@ -111,7 +111,7 @@
         { icon: 'users', title: 'Integritas', desc: 'Jujur dalam penawaran, transparan dalam pengerjaan.' }
       ],
       history: [
-        { year: '2014', title: 'Cakra Proteksi berdiri', desc: 'Dimulai sebagai layanan penjualan dan isi ulang APAR di Jakarta Timur.' },
+        { year: '2014', title: 'Perisai Prima berdiri', desc: 'Dimulai sebagai layanan penjualan dan isi ulang APAR di Jakarta Timur.' },
         { year: '2017', title: 'Divisi instalasi sistem', desc: 'Mulai menangani instalasi fire alarm, hydrant, dan sprinkler untuk gedung.' },
         { year: '2020', title: 'Layanan inspeksi berkala', desc: 'Membuka layanan inspeksi dan perawatan rutin dengan laporan digital.' },
         { year: '2023', title: 'Ekspansi ke luar Jawa', desc: 'Melayani proyek kawasan industri di Sumatra dan Kalimantan.' },
@@ -162,10 +162,10 @@
     ],
 
     events: [
-      { id: 'e1', title: 'Pelatihan Penggunaan APAR untuk Karyawan', category: 'Pelatihan', date: '2026-11-26', time: '09.00 – 12.00 WIB', location: 'Workshop Cakra Proteksi, Jakarta Timur', image: IMG('photo-1552664730-d307ca884978'),
+      { id: 'e1', title: 'Pelatihan Penggunaan APAR untuk Karyawan', category: 'Pelatihan', date: '2026-11-26', time: '09.00 – 12.00 WIB', location: 'Workshop Perisai Prima, Jakarta Timur', image: IMG('photo-1552664730-d307ca884978'),
         desc: 'Pelatihan praktik memadamkan api menggunakan APAR, mengenal kelas kebakaran, dan prosedur pelaporan keadaan darurat. Peserta mendapat sertifikat keikutsertaan.' },
       { id: 'e2', title: 'Pameran Keselamatan Kerja & Proteksi Kebakaran 2026', category: 'Pameran', date: '2026-12-09', time: '10.00 – 18.00 WIB', location: 'JIExpo Kemayoran, Jakarta', image: IMG('photo-1540575467063-178a50c2df87'),
-        desc: 'Kunjungi booth Cakra Proteksi untuk melihat demo sistem fire alarm, sprinkler, dan produk APD terbaru. Tersedia konsultasi gratis untuk pengelola gedung.' },
+        desc: 'Kunjungi booth Perisai Prima untuk melihat demo sistem fire alarm, sprinkler, dan produk APD terbaru. Tersedia konsultasi gratis untuk pengelola gedung.' },
       { id: 'e3', title: 'Webinar: Kewajiban Sistem Proteksi Kebakaran pada Gedung', category: 'Webinar', date: '2027-01-20', time: '13.00 – 15.00 WIB', location: 'Daring via Zoom', image: IMG('photo-1517694712202-14dd9538aa97'),
         desc: 'Membahas jenis sistem proteksi yang wajib ada pada gedung, cara menyiapkan inspeksi, dan tips menyusun anggaran perawatan tahunan.' },
       { id: 'e4', title: 'Simulasi Evakuasi Kebakaran Bersama Mitra', category: 'Simulasi', date: '2026-09-17', time: '08.00 – 11.00 WIB', location: 'Kawasan Industri Pulogadung', image: IMG('photo-1505373877841-8d25f7d46678'),
@@ -177,16 +177,16 @@
     news: [
       { id: 'n1', title: 'Mengapa APAR Wajib Diperiksa Secara Berkala?', category: 'Edukasi', date: '2026-11-10', author: 'Tim Teknis', status: 'publish', image: IMG('photo-1497366216548-37526070297c'),
         excerpt: 'APAR yang terlihat baik dari luar belum tentu siap pakai. Ini hal-hal yang perlu dicek secara rutin.',
-        content: ['Alat pemadam api ringan (APAR) sering dianggap cukup dipasang sekali lalu dilupakan. Padahal, tekanan tabung bisa turun, media pemadam bisa menggumpal, dan selang bisa retak tanpa terlihat dari luar.', 'Pemeriksaan berkala memastikan APAR benar-benar berfungsi saat dibutuhkan. Hal yang dicek antara lain jarum pengukur tekanan, kondisi segel dan pin pengaman, kondisi selang dan nozzle, serta tanggal kedaluwarsa media pemadam.', 'Tim Cakra Proteksi menyediakan layanan inspeksi rutin dengan laporan digital dan kartu inspeksi yang ditempel di setiap unit, sehingga pengelola gedung mudah memantau kondisi seluruh APAR.'] },
+        content: ['Alat pemadam api ringan (APAR) sering dianggap cukup dipasang sekali lalu dilupakan. Padahal, tekanan tabung bisa turun, media pemadam bisa menggumpal, dan selang bisa retak tanpa terlihat dari luar.', 'Pemeriksaan berkala memastikan APAR benar-benar berfungsi saat dibutuhkan. Hal yang dicek antara lain jarum pengukur tekanan, kondisi segel dan pin pengaman, kondisi selang dan nozzle, serta tanggal kedaluwarsa media pemadam.', 'Tim Perisai Prima menyediakan layanan inspeksi rutin dengan laporan digital dan kartu inspeksi yang ditempel di setiap unit, sehingga pengelola gedung mudah memantau kondisi seluruh APAR.'] },
       { id: 'n2', title: 'Mengenal Kelas Kebakaran dan Jenis APAR yang Tepat', category: 'Edukasi', date: '2026-10-28', author: 'Tim Teknis', status: 'publish', image: IMG('photo-1600880292203-757bb62b4baf'),
         excerpt: 'Salah memilih jenis APAR bisa membuat api justru membesar. Kenali kelas kebakaran sebelum membeli.',
         content: ['Kebakaran dikelompokkan berdasarkan bahan yang terbakar. Kelas A untuk bahan padat seperti kertas dan kayu, kelas B untuk cairan dan gas mudah terbakar, kelas C untuk instalasi listrik yang bertegangan, dan kelas D untuk logam.', 'APAR powder ABC cocok untuk sebagian besar kebutuhan kantor dan gudang. Untuk ruang server dan panel listrik, APAR CO2 lebih disarankan karena tidak meninggalkan residu.', 'Jika ragu, konsultasikan kebutuhan Anda dengan tim kami. Kami akan membantu menentukan jenis, kapasitas, dan jumlah APAR sesuai luas dan fungsi ruangan.'] },
-      { id: 'n3', title: 'Cakra Proteksi Menyelesaikan Instalasi Hydrant di Kawasan Industri', category: 'Perusahaan', date: '2026-10-05', author: 'Humas', status: 'publish', image: IMG('photo-1486406146926-c627a92ad1ab'),
+      { id: 'n3', title: 'Perisai Prima Menyelesaikan Instalasi Hydrant di Kawasan Industri', category: 'Perusahaan', date: '2026-10-05', author: 'Humas', status: 'publish', image: IMG('photo-1486406146926-c627a92ad1ab'),
         excerpt: 'Proyek instalasi hydrant untuk tiga gudang logistik selesai tepat waktu dan lolos uji tekanan.',
-        content: ['Tim proyek Cakra Proteksi telah menyelesaikan instalasi sistem fire hydrant untuk tiga gudang logistik milik mitra di kawasan industri Jawa Barat.', 'Pekerjaan mencakup pemasangan pompa, jaringan pipa utama, hydrant pillar, dan hydrant box, lalu ditutup dengan uji tekanan dan uji aliran bersama pihak pengelola kawasan.', 'Setelah serah terima, sistem ini akan dirawat melalui kontrak perawatan berkala agar selalu siap digunakan.'] },
+        content: ['Tim proyek Perisai Prima telah menyelesaikan instalasi sistem fire hydrant untuk tiga gudang logistik milik mitra di kawasan industri Jawa Barat.', 'Pekerjaan mencakup pemasangan pompa, jaringan pipa utama, hydrant pillar, dan hydrant box, lalu ditutup dengan uji tekanan dan uji aliran bersama pihak pengelola kawasan.', 'Setelah serah terima, sistem ini akan dirawat melalui kontrak perawatan berkala agar selalu siap digunakan.'] },
       { id: 'n4', title: '5 Tips Menyiapkan Jalur Evakuasi di Kantor', category: 'Tips', date: '2026-09-22', author: 'Tim K3', status: 'publish', image: IMG('photo-1522071820081-009f0129c71c'),
         excerpt: 'Jalur evakuasi yang jelas bisa menyelamatkan nyawa. Mulai dari langkah sederhana berikut.',
-        content: ['Pertama, pastikan jalur evakuasi bebas dari barang yang menghalangi. Kedua, pasang rambu arah evakuasi yang mudah terlihat, termasuk saat listrik padam.', 'Ketiga, tentukan titik kumpul yang aman dan cukup luas. Keempat, tunjuk petugas evakuasi di setiap lantai. Kelima, lakukan simulasi secara rutin agar seluruh karyawan terbiasa.', 'Cakra Proteksi dapat membantu menyusun denah evakuasi dan memfasilitasi simulasi untuk kantor Anda.'] },
+        content: ['Pertama, pastikan jalur evakuasi bebas dari barang yang menghalangi. Kedua, pasang rambu arah evakuasi yang mudah terlihat, termasuk saat listrik padam.', 'Ketiga, tentukan titik kumpul yang aman dan cukup luas. Keempat, tunjuk petugas evakuasi di setiap lantai. Kelima, lakukan simulasi secara rutin agar seluruh karyawan terbiasa.', 'Perisai Prima dapat membantu menyusun denah evakuasi dan memfasilitasi simulasi untuk kantor Anda.'] },
       { id: 'n5', title: 'Rencana Program Edukasi K3 2027', category: 'Perusahaan', date: '2026-11-14', author: 'Editor', status: 'draft', image: IMG('photo-1517694712202-14dd9538aa97'),
         excerpt: 'Rangkaian pelatihan dan simulasi keselamatan yang akan kami gelar sepanjang 2027.',
         content: ['Ini contoh berita berstatus draf. Berita draf tidak tampil di website publik sampai admin menerbitkannya dari panel admin.'] }
@@ -209,7 +209,7 @@
     clients: ['Gedung Perkantoran', 'Kawasan Industri', 'Rumah Sakit', 'Pusat Perbelanjaan', 'Gudang Logistik', 'Hotel & Resort', 'Sekolah & Kampus', 'Apartemen', 'Pabrik Manufaktur', 'Instansi Pemerintah'],
 
     testimonials: [
-      { name: 'Hendra Gunawan', role: 'Building Manager, Gedung Perkantoran (contoh)', text: 'Inspeksi rutin dari Cakra Proteksi sangat rapi. Laporannya jelas, sehingga kami siap setiap kali ada audit keselamatan gedung.' },
+      { name: 'Hendra Gunawan', role: 'Building Manager, Gedung Perkantoran (contoh)', text: 'Inspeksi rutin dari Perisai Prima sangat rapi. Laporannya jelas, sehingga kami siap setiap kali ada audit keselamatan gedung.' },
       { name: 'Maria Ulfa', role: 'HSE Officer, Pabrik Manufaktur (contoh)', text: 'Instalasi hydrant selesai sesuai jadwal tanpa mengganggu produksi. Tim teknisinya komunikatif dan paham standar.' },
       { name: 'Dodi Kurniawan', role: 'Pemilik Gudang Logistik (contoh)', text: 'Pemesanan APAR dan APD cepat, harganya transparan, dan pelatihan karyawannya sangat membantu.' }
     ],
@@ -225,10 +225,10 @@
   /* ---------- Penyimpanan (paket + Panel Admin) ----------
      Mockup memakai localStorage. Untuk produksi, ganti fungsi-fungsi
      ini dengan fetch() ke API backend. */
-  const KEY = 'cakra_cp_data_v1';
-  const MSG_KEY = 'cakra_cp_messages_v1';
-  const USER_KEY = 'cakra_cp_users_v1';
-  const LOG_KEY = 'cakra_cp_log_v1';
+  const KEY = 'demo_cp_data_v1';
+  const MSG_KEY = 'demo_cp_messages_v1';
+  const USER_KEY = 'demo_cp_users_v1';
+  const LOG_KEY = 'demo_cp_log_v1';
   const clone = (o) => JSON.parse(JSON.stringify(o));
   function sGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
   function sSet(k, v) { try { localStorage.setItem(k, v); return true; } catch (e) { return false; } }

@@ -1,7 +1,7 @@
-# Demo Website Company Profile — PT Cakra Proteksi Indonesia
+# Demo Website Company Profile (3 Paket)
 
 Situs statis (HTML + CSS + JavaScript, tanpa build step), siap di-deploy ke Vercel.
-Isi perusahaan (produk, event, berita, struktur, alamat) adalah **contoh** dan perlu diganti dengan materi resmi dari klien.
+Demo memakai perusahaan **fiktif** "PT Perisai Prima Nusantara". Nama, alamat, email, produk, event, berita, struktur, dan testimoni semuanya contoh dan diganti dengan materi resmi klien saat produksi.
 
 | URL | Isi |
 |---|---|

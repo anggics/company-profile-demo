@@ -90,7 +90,7 @@
       '<div><h5>Menu</h5><div class="foot-links">' + ROUTES.map(([k, l]) => '<a href="#/' + k + '">' + l + '</a>').join('') + '</div></div>' +
       '<div><h5>Produk</h5><div class="foot-links">' + D.products.slice(0, 5).map((p) => '<a href="#/produk/' + esc(p.id) + '">' + esc(p.name) + '</a>').join('') + '</div></div>' +
       '<div><h5>Kontak</h5><div class="foot-links"><a href="mailto:' + esc(C.email) + '">' + esc(C.email) + '</a><a href="' + waHref('Halo ' + C.short) + '" target="_blank" rel="noopener">WhatsApp</a><span>' + esc(C.phone) + '</span></div></div>' +
-      '</div><div class="foot-big">CAKRA</div>' +
+      '</div><div class="foot-big">PERISAI</div>' +
       '<div class="foot-bottom"><span>© ' + new Date().getFullYear() + ' ' + esc(C.name) + '. Hak cipta dilindungi.</span>' +
       (USE_STORE ? '<a href="../admin/">' + icon('lock', 14) + ' Masuk Panel Admin</a>' : '<span>Demo Paket Profesional</span>') + '</div></div>';
 
@@ -572,7 +572,7 @@
 
     if (USE_STORE) {
       window.addEventListener('storage', (e) => {
-        if (e.key === null || e.key === 'cakra_cp_data_v1') {
+        if (e.key === null || e.key === 'demo_cp_data_v1') {
           D = CP.getData(true); C = D.company;
           renderShell(); render(current || 'beranda', 0.1);
           toast('Konten diperbarui dari panel admin.');

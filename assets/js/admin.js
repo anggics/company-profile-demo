@@ -1,5 +1,5 @@
 /* =====================================================================
-   PANEL ADMIN (DEMO) — PT Cakra Proteksi Indonesia
+   PANEL ADMIN (DEMO) — PT Perisai Prima Nusantara
    Hak akses (RBAC):
      • Admin  : semua menu (konten, struktur, profil, pesan, pengguna) + menerbitkan berita
      • Editor : produk, event, berita (berita baru tersimpan sebagai draf)
@@ -11,7 +11,7 @@
   const { icon, esc, cssUrl, fmtDate } = CP;
   const $ = (s, r) => (r || document).querySelector(s);
   const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
-  const SESSION = 'cakra_admin_session';
+  const SESSION = 'demo_admin_session';
 
   let D = CP.getData(true);
   let msgs = CP.getMessages();
@@ -542,7 +542,7 @@
 
   window.addEventListener('storage', (e) => {
     if (!me || !$('#content')) return;
-    if (e.key === 'cakra_cp_messages_v1') { msgs = CP.getMessages(); updateBadge(); if (isAdmin()) { toast('Ada pesan baru masuk.'); if (/^#(pesan|dashboard)?$/.test(location.hash)) show(); } }
+    if (e.key === 'demo_cp_messages_v1') { msgs = CP.getMessages(); updateBadge(); if (isAdmin()) { toast('Ada pesan baru masuk.'); if (/^#(pesan|dashboard)?$/.test(location.hash)) show(); } }
   });
   window.addEventListener('hashchange', () => { if (me && $('#content')) { closeModal(); show(); } });
 

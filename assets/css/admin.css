@@ -198,7 +198,7 @@ td .t-sub { color: var(--muted); font-size: .82rem; max-width: 420px; }
 }
 @media (max-width: 520px) { .grid-stats { grid-template-columns: 1fr; } .topbar .btn span { display: none; } }
 
-/* RBAC & tambahan Cakra */
+/* RBAC & tambahan */
 .side-nav a.locked { opacity: .45; }
 .side-nav .lock { margin-left: auto; display: grid; }
 .badge.admin { background: #e6f2ef; color: #0f6b5f; }
